@@ -21596,7 +21596,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+		value: true
 	});
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -21626,72 +21626,68 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _class = function (_React$Component) {
-	  _inherits(_class, _React$Component);
+		_inherits(_class, _React$Component);
 
-	  function _class(props) {
-	    _classCallCheck(this, _class);
+		function _class(props) {
+			_classCallCheck(this, _class);
 
-	    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
+			var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
 
-	    _this.generateLayout = _this.generateLayout.bind(_this);
-	    _this.drop = _this.drop.bind(_this);
-	    _this.allowDrop = _this.allowDrop.bind(_this);
-	    _this.state = {
+			_this.generateLayout = _this.generateLayout.bind(_this);
+			_this.drop = _this.drop.bind(_this);
+			_this.allowDrop = _this.allowDrop.bind(_this);
+			_this.state = {
+				flag: true
+			};
+			return _this;
+		}
 
-	      flag: true
-	    };
-	    return _this;
-	  }
+		_createClass(_class, [{
+			key: 'generateLayout',
+			value: function generateLayout() {
+				var first = this.props.row;
+				var layout = first.map(function (item, i) {
+					return _react2.default.createElement(_players2.default, { players: item, key: i });
+				});
+				return layout;
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _this2 = this;
 
-	  _createClass(_class, [{
-	    key: 'generateLayout',
-	    value: function generateLayout() {
-	      var first = this.props.row;
-	      var layout = first.map(function (item, i) {
-	        return _react2.default.createElement(_players2.default, { players: item, key: i });
-	      });
-	      return layout;
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var _this2 = this;
+				return _react2.default.createElement(
+					'div',
+					{ className: 'rows', id: this.props.id, onDrop: this.drop, onDragOver: this.allowDrop, ref: function ref(node) {
+							return _this2.node = node;
+						} },
+					this.generateLayout()
+				);
+			}
+		}, {
+			key: 'allowDrop',
+			value: function allowDrop(ev) {
+				ev.preventDefault();
+				var id = ev.target.id;
+				var no = ev.target.children.length;
+				if (id == 'Goali_row' && no == '1') {
+					this.setState({ flag: false });
+				} else {
+					this.setState({ flag: true });
+				}
+			}
+		}, {
+			key: 'drop',
+			value: function drop(ev) {
+				ev.preventDefault();
+				var data = ev.dataTransfer.getData("text");
+				if (this.state.flag == true) {
+					ev.target.appendChild(document.getElementById(data));
+				}
+			}
+		}]);
 
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'rows', id: this.props.id, onDrop: this.drop, onDragOver: this.allowDrop, ref: function ref(node) {
-	            return _this2.node = node;
-	          } },
-	        this.generateLayout()
-	      );
-	    }
-	  }, {
-	    key: 'allowDrop',
-	    value: function allowDrop(ev) {
-	      ev.preventDefault();
-	      var id = ev.target.id;
-	      var no = ev.target.children.length;
-
-	      if (id == 'Goali_row' && no == '1') {
-	        this.setState({ flag: false });
-	      } else {
-	        this.setState({ flag: true });
-	      }
-	    }
-	  }, {
-	    key: 'drop',
-	    value: function drop(ev) {
-
-	      ev.preventDefault();
-	      var data = ev.dataTransfer.getData("text");
-
-	      if (this.state.flag == true) {
-	        ev.target.appendChild(document.getElementById(data));
-	      }
-	    }
-	  }]);
-
-	  return _class;
+		return _class;
 	}(_react2.default.Component);
 
 	exports.default = _class;
