@@ -1,0 +1,115 @@
+
+
+
+.rows{
+	
+	height:100px;	
+	border: 1px solid blue;
+	margin-top: 10px;
+	text-align: center;
+
+}
+
+
+.playerWrapper{
+
+	margin-left: 60px;
+	text-align: center;
+	display: inline-block;
+	box-shadow: 0px 6px 5px #888888;
+	vertical-align: top;
+}
+
+.players{
+	margin-top: 5px;
+    height: 50px;
+    width: 50px;
+    background-color: #ff1a1a;
+    display: inline-block;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+	border-bottom: 3px solid black;
+	vertical-align: center;
+}
+.playerDetails{
+	display: none;
+    background-color: black;
+    opacity: 0.8;
+    width: 105px;
+    color: white;
+    font-size: 12px;
+    text-align: left;
+}
+
+.players:hover .playerDetails{
+
+	display: inline-block;
+	
+
+}
+
+
+.players::after{
+    content: "";
+    width: 13px;
+    height: 13px;
+    transform: rotate;
+    position: absolute;
+    background-color: #b30000;
+    top: 2px;
+    left: -8px;
+    transform: rotate(60deg);
+    z-index: -3;
+}
+
+.players::before{
+    content: "";
+    width: 13px;
+    height: 13px;
+    transform: rotate;
+    position: absolute;
+    background-color: #b30000;
+    top: 2px;
+    right: -10px;
+    transform: rotate(109deg);
+    z-index: -3;
+}
+
+
+.playerName{
+
+    font-size: 10px;
+    color: white;
+    display: block;
+
+}
+
+.playerNo{
+
+font-size: 12px;
+color: white;
+
+
+}
+
+#Goali_row .players {
+
+	background-color:  #00b33c;
+
+}
+
+
+#Goali_row .players::after {
+
+background-color: #006622; 
+
+}
+#Goali_row .players::before {
+
+background-color: #006622; 
+
+}
+
+
+
