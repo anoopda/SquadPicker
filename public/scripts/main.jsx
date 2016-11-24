@@ -14,7 +14,7 @@ super();
 					"first_row":[
 
 							{
-								name:"Rooney",
+								name:"Vijay",
 								no:"01",
 								age:"18",
 								height:"6'5",
@@ -22,7 +22,7 @@ super();
 								nationality:"India"
 							},
 							{
-								name:"Ronaldo",
+								name:"Nishin",
 								no:"02",
 								age:"26",
 								height:"6'5",
@@ -37,7 +37,7 @@ super();
 
 					"second_row":[
 								{
-									name:"ibraham",
+									name:"Ann",
 									no:"03",
 									age:"26",
 									height:"6'8",
@@ -68,7 +68,7 @@ super();
 
 
 								{
-									name:"Chuang Li",
+									name:"Gayathri",
 									no:"22",
 									age:"25",
 									height:"5'8",
@@ -82,7 +82,7 @@ super();
 
 					"Third_row":[
 							{
-								name:"Sthreenath",
+								name:"Sreenath",
 								no:"06",
 								age:"21",
 								height:"6'1",
@@ -109,7 +109,7 @@ super();
 
 							},
 							{
-								name:"SeenaMon",
+								name:"Seena",
 								no:"100",
 								age:"16",
 								height:"6'2",
@@ -124,7 +124,7 @@ super();
 
 							{
 
-								name:"Vandersar",
+								name:"Ajay",
 								no:"41",
 								age:"22",
 								height:"6'2",
