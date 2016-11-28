@@ -7,8 +7,10 @@ export default class extends React.Component {
 	constructor(props){
 		super(props);
 		this.drag = this.drag.bind(this);
+		
 	}
 	render(){
+
 		return(
 			<div className = "playerWrapper" id ={this.props.players.no} draggable="true" onDragStart={this.drag}>
 				<div className = "players">
@@ -19,6 +21,8 @@ export default class extends React.Component {
 						<div>Height:{this.props.players.height}</div>
 						<div>Weight:{this.props.players.weight}</div>
 						<div>Nationality:{this.props.players.nationality}</div>
+						<img src={this.props.players.image}/>
+
 					</div>
 				</div>
 			</div>	
@@ -27,7 +31,11 @@ export default class extends React.Component {
 
 	drag(ev) {
 	    ev.dataTransfer.setData("text", ev.target.id);
-	    console.log()
+	 
+	    	
+	 		this.props.getsubRow(ev.target.parentNode);
+
+	    
 	}
 
 

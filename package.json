@@ -12,9 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "babel-loader": "^6.2.8",
+    "dragula": "^3.7.2",
     "jquery": "^3.1.1",
     "jquery-ui": "^1.12.1",
     "react": "^15.4.0",
+    "react-dnd": "^2.1.4",
+    "react-dnd-html5-backend": "^2.1.2",
     "react-dom": "^15.4.0",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"

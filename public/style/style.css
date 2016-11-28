@@ -111,5 +111,46 @@ background-color: #006622;
 
 }
 
+#sub_row .players {
+
+	background-color: #ffff4d;
+
+}
+
+
+#sub_row .players::after {
+
+background-color: #e6e600; 
+
+}
+#sub_row .players::before {
+
+background-color: #e6e600; 
+
+}
+
+#sub_row .players .playerNo{
+	font-size: 12px;
+color: black;
+}
+#sub_row .players .playerName{
+	font-size: 12px;
+color: black;
+}
+
+
+.formations div {
+	display: inline-block;
+    text-align: center;
+    margin-left: 8px;
+    height: 82px;
+    background-color: lemonchiffon;
+    width: 30px;
+    border: 1px solid yellow;
+}
+
+
+
+
 
 

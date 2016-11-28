@@ -64,6 +64,10 @@
 
 	var _rows2 = _interopRequireDefault(_rows);
 
+	var _formation = __webpack_require__(181);
+
+	var _formation2 = _interopRequireDefault(_formation);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -87,14 +91,16 @@
 					age: "18",
 					height: "6'5",
 					weight: "200lbs",
-					nationality: "India"
+					nationality: "India",
+					image: "../images/1480010172_flag-india.png"
 				}, {
 					name: "Nishin",
 					no: "02",
 					age: "26",
 					height: "6'5",
 					weight: "225lbs",
-					nationality: "Sweden"
+					nationality: "Germany",
+					image: "../images/1480010307_flag-germany.png"
 				}],
 
 				"second_row": [{
@@ -103,7 +109,8 @@
 					age: "26",
 					height: "6'8",
 					weight: "202lbs",
-					nationality: "Brazil"
+					nationality: "Brazil",
+					image: "../images/1480010794_flag-brazil.png"
 
 				}, {
 					name: "Anoop",
@@ -111,14 +118,16 @@
 					age: "22",
 					height: "6'2",
 					weight: "200lbs",
-					nationality: "Spain"
+					nationality: "Spain",
+					image: "../images/1480010157_flag-spain.png"
 				}, {
 					name: "Sabir",
 					no: "05",
 					age: "22",
 					height: "6'6",
 					weight: "200lbs",
-					nationality: "Hungary"
+					nationality: "Portugal",
+					image: "../images/1480010184_flag-portugal.png"
 
 				}, {
 					name: "Gayathri",
@@ -126,7 +135,8 @@
 					age: "25",
 					height: "5'8",
 					weight: "200lbs",
-					nationality: "China"
+					nationality: "Argentina",
+					image: "../images/1480010198_flag-argentina.png"
 
 				}],
 
@@ -136,7 +146,8 @@
 					age: "21",
 					height: "6'1",
 					weight: "235lbs",
-					nationality: "India"
+					nationality: "India",
+					image: "../images/1480010172_flag-india.png"
 
 				}, {
 					name: "Finnidy",
@@ -144,7 +155,8 @@
 					age: "19",
 					height: "6'7",
 					weight: "168lbs",
-					nationality: "Hungary"
+					nationality: "France",
+					image: "../images/1480010286_flag-france.png"
 
 				}, {
 					name: "Dan",
@@ -152,7 +164,8 @@
 					age: "22",
 					height: "6'2",
 					weight: "200lbs",
-					nationality: "England"
+					nationality: "Brazil",
+					image: "../images/1480010794_flag-brazil.png"
 
 				}, {
 					name: "Seena",
@@ -160,7 +173,8 @@
 					age: "16",
 					height: "6'2",
 					weight: "200lbs",
-					nationality: "Rome"
+					nationality: "Spain",
+					image: "../images/1480010157_flag-spain.png"
 
 				}],
 
@@ -171,9 +185,47 @@
 					age: "22",
 					height: "6'2",
 					weight: "200lbs",
-					nationality: "Denmark"
+					nationality: "Portugal",
+					image: "../images/1480010184_flag-portugal.png"
 
-				}]
+				}],
+
+				"sub_row": [{
+
+					name: "Mr.X",
+					no: "101",
+					age: "22",
+					height: "6'2",
+					weight: "200lbs",
+					nationality: "Spain",
+					image: "../images/1480010157_flag-spain.png"
+
+				}, {
+					name: "Mr.XXX",
+					no: "102",
+					age: "22",
+					height: "6'2",
+					weight: "200lbs",
+					nationality: "Argentina",
+					image: "../images/1480010198_flag-argentina.png"
+
+				}, {
+
+					name: "CJ",
+					no: "103",
+					age: "25",
+					height: "6'2",
+					weight: "200lbs",
+					nationality: "Germany",
+					image: "../images/1480010307_flag-germany.png"
+
+				}],
+
+				"formationRow1": 2,
+				"formationRow2": 4,
+				"formationRow3": 4,
+				"subRow": "null"
+
 			};
 
 			return _this;
@@ -182,15 +234,40 @@
 		_createClass(Main, [{
 			key: 'render',
 			value: function render() {
+				var _this2 = this;
 
 				return _react2.default.createElement(
 					'div',
-					{ className: 'rowContainer' },
-					_react2.default.createElement(_rows2.default, { id: "first_row", row: this.state.first_row }),
-					_react2.default.createElement(_rows2.default, { id: "second_row", row: this.state.second_row }),
-					_react2.default.createElement(_rows2.default, { id: "Third_row", row: this.state.Third_row }),
-					_react2.default.createElement(_rows2.default, { id: "Goali_row", row: this.state.Goali_row })
+					{ className: 'rowContainer', ref: function ref(node) {
+							return _this2.node = node;
+						} },
+					_react2.default.createElement(_rows2.default, { id: "first_row", row: this.state.first_row, ref: function ref(node) {
+							return _this2.row1 = node;
+						}, getChild: this.getChild.bind(this), subRow: this.state.subRow, getsubRow: this.getsubRow.bind(this) }),
+					_react2.default.createElement(_rows2.default, { id: "second_row", row: this.state.second_row, ref: function ref(node) {
+							return _this2.row2 = node;
+						}, getChild: this.getChild.bind(this), subRow: this.state.subRow, getsubRow: this.getsubRow.bind(this) }),
+					_react2.default.createElement(_rows2.default, { id: "Third_row", row: this.state.Third_row, ref: function ref(node) {
+							return _this2.row3 = node;
+						}, getChild: this.getChild.bind(this), subRow: this.state.subRow, getsubRow: this.getsubRow.bind(this) }),
+					_react2.default.createElement(_rows2.default, { id: "Goali_row", row: this.state.Goali_row, getChild: this.getChild.bind(this), subRow: this.state.subRow, getsubRow: this.getsubRow.bind(this) }),
+					_react2.default.createElement(_rows2.default, { id: "sub_row", row: this.state.sub_row, ref: function ref(node) {
+							return _this2.subrow = node;
+						}, getChild: this.getChild.bind(this), subRow: this.state.subRow, getsubRow: this.getsubRow.bind(this) }),
+					_react2.default.createElement(_formation2.default, { formationRow1: this.state.formationRow1, formationRow2: this.state.formationRow2, formationRow3: this.state.formationRow3 })
 				);
+			}
+		}, {
+			key: 'getsubRow',
+			value: function getsubRow(subRow) {
+
+				this.setState({ subRow: subRow });
+			}
+		}, {
+			key: 'getChild',
+			value: function getChild() {
+
+				this.setState({ formationRow1: this.row1.node.children.length, formationRow2: this.row2.node.children.length, formationRow3: this.row3.node.children.length });
 			}
 		}]);
 
@@ -21637,29 +21714,34 @@
 			_this.drop = _this.drop.bind(_this);
 			_this.allowDrop = _this.allowDrop.bind(_this);
 			_this.state = {
-				flag: true
+				flag_goalie: true,
+				flag_subRow: false,
+				subRow: "null"
 			};
+
 			return _this;
 		}
 
 		_createClass(_class, [{
 			key: 'generateLayout',
 			value: function generateLayout() {
+				var _this2 = this;
+
 				var first = this.props.row;
 				var layout = first.map(function (item, i) {
-					return _react2.default.createElement(_players2.default, { players: item, key: i });
+					return _react2.default.createElement(_players2.default, { players: item, key: i, getsubRow: _this2.props.getsubRow });
 				});
 				return layout;
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-				var _this2 = this;
+				var _this3 = this;
 
 				return _react2.default.createElement(
 					'div',
 					{ className: 'rows', id: this.props.id, onDrop: this.drop, onDragOver: this.allowDrop, ref: function ref(node) {
-							return _this2.node = node;
+							return _this3.node = node;
 						} },
 					this.generateLayout()
 				);
@@ -21670,20 +21752,35 @@
 				ev.preventDefault();
 				var id = ev.target.id;
 				var no = ev.target.children.length;
+
 				if (id == 'Goali_row' && no == '1') {
-					this.setState({ flag: false });
+					this.setState({ flag_goalie: false });
 				} else {
-					this.setState({ flag: true });
+					this.setState({ flag_goalie: true });
+				}
+
+				if (this.state.subRow == 'sub_row') {
+					this.setState({ flag_subRow: true });
+				} else {
+					this.setState({ flag_subRow: false });
 				}
 			}
 		}, {
 			key: 'drop',
 			value: function drop(ev) {
+
 				ev.preventDefault();
 				var data = ev.dataTransfer.getData("text");
-				if (this.state.flag == true) {
+
+				if (this.state.flag_goalie == true && this.props.subRow.id === 'sub_row') {
+
+					this.props.subRow.appendChild(document.getElementById(ev.target.firstChild.id));
+					ev.target.appendChild(document.getElementById(data));
+				} else if (this.state.flag_goalie == true && this.props.subRow.id != 'sub_row') {
 					ev.target.appendChild(document.getElementById(data));
 				}
+
+				this.props.getChild();
 			}
 		}]);
 
@@ -21729,12 +21826,14 @@
 			var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this, props));
 
 			_this.drag = _this.drag.bind(_this);
+
 			return _this;
 		}
 
 		_createClass(_class, [{
 			key: 'render',
 			value: function render() {
+
 				return _react2.default.createElement(
 					'div',
 					{ className: 'playerWrapper', id: this.props.players.no, draggable: 'true', onDragStart: this.drag },
@@ -21781,7 +21880,8 @@
 								null,
 								'Nationality:',
 								this.props.players.nationality
-							)
+							),
+							_react2.default.createElement('img', { src: this.props.players.image })
 						)
 					)
 				);
@@ -21790,7 +21890,8 @@
 			key: 'drag',
 			value: function drag(ev) {
 				ev.dataTransfer.setData("text", ev.target.id);
-				console.log();
+
+				this.props.getsubRow(ev.target.parentNode);
 			}
 		}]);
 
@@ -32024,6 +32125,73 @@
 	return jQuery;
 	} );
 
+
+/***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(32);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _class = function (_React$Component) {
+		_inherits(_class, _React$Component);
+
+		function _class() {
+			_classCallCheck(this, _class);
+
+			return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+		}
+
+		_createClass(_class, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'formations' },
+					_react2.default.createElement(
+						'div',
+						null,
+						this.props.formationRow1
+					),
+					_react2.default.createElement(
+						'div',
+						null,
+						this.props.formationRow2
+					),
+					_react2.default.createElement(
+						'div',
+						null,
+						this.props.formationRow3
+					)
+				);
+			}
+		}]);
+
+		return _class;
+	}(_react2.default.Component);
+
+	exports.default = _class;
 
 /***/ }
 /******/ ]);
