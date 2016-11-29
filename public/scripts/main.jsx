@@ -196,6 +196,8 @@ super();
 		"formationRow1":2,
 		"formationRow2":4,
 		"formationRow3":4,
+		"goaliRow":1,
+		"count" : 11,
 		"subRow":"null"
 				
 	}
@@ -217,11 +219,11 @@ render()
 		 return (
 
 		 	<div className = "rowContainer" ref={node => this.node = node}>
-		 		<Row id = {"first_row"} row ={this.state.first_row} ref={node => this.row1 = node} getChild={this.getChild.bind(this)} subRow = {this.state.subRow} getsubRow={this.getsubRow.bind(this)}/>
-		 		<Row id= {"second_row"} row = {this.state.second_row} ref={node => this.row2 = node} getChild={this.getChild.bind(this)} subRow = {this.state.subRow} getsubRow={this.getsubRow.bind(this)}/>
-		 		<Row id= {"Third_row"} row ={this.state.Third_row} ref={node => this.row3 = node} getChild={this.getChild.bind(this)}  subRow = {this.state.subRow} getsubRow={this.getsubRow.bind(this)}/>
-		 		<Row id= {"Goali_row"} row={this.state.Goali_row} getChild={this.getChild.bind(this)}   subRow = {this.state.subRow} getsubRow={this.getsubRow.bind(this)} />
-		 		<Row id= {"sub_row"} row={this.state.sub_row} ref={node => this.subrow = node} getChild={this.getChild.bind(this)} subRow = {this.state.subRow} getsubRow={this.getsubRow.bind(this)} />
+		 		<Row id = {"first_row"} count={this.state.count} row ={this.state.first_row} ref={node => this.row1 = node} getChild={this.getChild.bind(this)} subRow = {this.state.subRow} getsubRow={this.getsubRow.bind(this)}  checkNo={this.checkNo.bind(this)}/>
+		 		<Row id= {"second_row"} count={this.state.count} row = {this.state.second_row} ref={node => this.row2 = node} getChild={this.getChild.bind(this)} subRow = {this.state.subRow} getsubRow={this.getsubRow.bind(this)} checkNo={this.checkNo.bind(this)}/>
+		 		<Row id= {"Third_row"} count={this.state.count} row ={this.state.Third_row} ref={node => this.row3 = node} getChild={this.getChild.bind(this)}  subRow = {this.state.subRow} getsubRow={this.getsubRow.bind(this)} checkNo={this.checkNo.bind(this)}/>
+		 		<Row id= {"Goali_row"} count={this.state.count} row={this.state.Goali_row} ref={node => this.row4 = node} getChild={this.getChild.bind(this)}   subRow = {this.state.subRow} getsubRow={this.getsubRow.bind(this)} checkNo={this.checkNo.bind(this)} />
+		 		<Row id= {"sub_row"} count={this.state.count} row={this.state.sub_row} ref={node => this.subrow = node} getChild={this.getChild.bind(this)} subRow = {this.state.subRow} getsubRow={this.getsubRow.bind(this)} />
 		 		<Formation formationRow1={this.state.formationRow1} formationRow2={this.state.formationRow2} formationRow3={this.state.formationRow3} />
 		 	</div>	 
 
@@ -242,7 +244,15 @@ getsubRow(subRow){
 
 getChild(){
 
-this.setState({formationRow1:this.row1.node.children.length,formationRow2:this.row2.node.children.length,formationRow3:this.row3.node.children.length});
+this.setState({formationRow1:this.row1.node.children.length,formationRow2:this.row2.node.children.length,formationRow3:this.row3.node.children.length,
+goaliRow:this.row4.node.children.length});
+}
+
+checkNo(){
+
+const count = this.state.formationRow1+this.state.formationRow2+this.state.formationRow3+this.state.goaliRow;
+this.setState({count:count});
+console.log("Entered checkNo");	
 }
 
 

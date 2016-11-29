@@ -70,17 +70,18 @@ export default class extends React.Component {
 
 	drop(ev) {
 		
-
+		this.props.checkNo();
+		console.log(this.props.count); 
 	    ev.preventDefault();
 	    var data = ev.dataTransfer.getData("text");
 
-	     if (this.state.flag_goalie==true && this.props.subRow.id === 'sub_row' ){
+	     if (this.state.flag_goalie==true && this.props.subRow.id === 'sub_row' && this.props.count=='11' ){
 	    	
 	    	this.props.subRow.appendChild(document.getElementById(ev.target.firstChild.id));
 	    	ev.target.appendChild(document.getElementById(data));	  
 	    }
 
-	    else if(this.state.flag_goalie==true && this.props.subRow.id != 'sub_row' ){	
+	    else if(this.state.flag_goalie==true && this.props.subRow.id != 'sub_row' && this.props.count == '11'){	
 	    ev.target.appendChild(document.getElementById(data));
 	    }
 	    

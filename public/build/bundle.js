@@ -64,7 +64,7 @@
 
 	var _rows2 = _interopRequireDefault(_rows);
 
-	var _formation = __webpack_require__(181);
+	var _formation = __webpack_require__(179);
 
 	var _formation2 = _interopRequireDefault(_formation);
 
@@ -224,6 +224,8 @@
 				"formationRow1": 2,
 				"formationRow2": 4,
 				"formationRow3": 4,
+				"goaliRow": 1,
+				"count": 11,
 				"subRow": "null"
 
 			};
@@ -241,17 +243,19 @@
 					{ className: 'rowContainer', ref: function ref(node) {
 							return _this2.node = node;
 						} },
-					_react2.default.createElement(_rows2.default, { id: "first_row", row: this.state.first_row, ref: function ref(node) {
+					_react2.default.createElement(_rows2.default, { id: "first_row", count: this.state.count, row: this.state.first_row, ref: function ref(node) {
 							return _this2.row1 = node;
-						}, getChild: this.getChild.bind(this), subRow: this.state.subRow, getsubRow: this.getsubRow.bind(this) }),
-					_react2.default.createElement(_rows2.default, { id: "second_row", row: this.state.second_row, ref: function ref(node) {
+						}, getChild: this.getChild.bind(this), subRow: this.state.subRow, getsubRow: this.getsubRow.bind(this), checkNo: this.checkNo.bind(this) }),
+					_react2.default.createElement(_rows2.default, { id: "second_row", count: this.state.count, row: this.state.second_row, ref: function ref(node) {
 							return _this2.row2 = node;
-						}, getChild: this.getChild.bind(this), subRow: this.state.subRow, getsubRow: this.getsubRow.bind(this) }),
-					_react2.default.createElement(_rows2.default, { id: "Third_row", row: this.state.Third_row, ref: function ref(node) {
+						}, getChild: this.getChild.bind(this), subRow: this.state.subRow, getsubRow: this.getsubRow.bind(this), checkNo: this.checkNo.bind(this) }),
+					_react2.default.createElement(_rows2.default, { id: "Third_row", count: this.state.count, row: this.state.Third_row, ref: function ref(node) {
 							return _this2.row3 = node;
-						}, getChild: this.getChild.bind(this), subRow: this.state.subRow, getsubRow: this.getsubRow.bind(this) }),
-					_react2.default.createElement(_rows2.default, { id: "Goali_row", row: this.state.Goali_row, getChild: this.getChild.bind(this), subRow: this.state.subRow, getsubRow: this.getsubRow.bind(this) }),
-					_react2.default.createElement(_rows2.default, { id: "sub_row", row: this.state.sub_row, ref: function ref(node) {
+						}, getChild: this.getChild.bind(this), subRow: this.state.subRow, getsubRow: this.getsubRow.bind(this), checkNo: this.checkNo.bind(this) }),
+					_react2.default.createElement(_rows2.default, { id: "Goali_row", count: this.state.count, row: this.state.Goali_row, ref: function ref(node) {
+							return _this2.row4 = node;
+						}, getChild: this.getChild.bind(this), subRow: this.state.subRow, getsubRow: this.getsubRow.bind(this), checkNo: this.checkNo.bind(this) }),
+					_react2.default.createElement(_rows2.default, { id: "sub_row", count: this.state.count, row: this.state.sub_row, ref: function ref(node) {
 							return _this2.subrow = node;
 						}, getChild: this.getChild.bind(this), subRow: this.state.subRow, getsubRow: this.getsubRow.bind(this) }),
 					_react2.default.createElement(_formation2.default, { formationRow1: this.state.formationRow1, formationRow2: this.state.formationRow2, formationRow3: this.state.formationRow3 })
@@ -267,7 +271,16 @@
 			key: 'getChild',
 			value: function getChild() {
 
-				this.setState({ formationRow1: this.row1.node.children.length, formationRow2: this.row2.node.children.length, formationRow3: this.row3.node.children.length });
+				this.setState({ formationRow1: this.row1.node.children.length, formationRow2: this.row2.node.children.length, formationRow3: this.row3.node.children.length,
+					goaliRow: this.row4.node.children.length });
+			}
+		}, {
+			key: 'checkNo',
+			value: function checkNo() {
+
+				var count = this.state.formationRow1 + this.state.formationRow2 + this.state.formationRow3 + this.state.goaliRow;
+				this.setState({ count: count });
+				console.log("Entered checkNo");
 			}
 		}]);
 
@@ -21686,11 +21699,11 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _players = __webpack_require__(179);
+	var _players = __webpack_require__(180);
 
 	var _players2 = _interopRequireDefault(_players);
 
-	var _jquery = __webpack_require__(180);
+	var _jquery = __webpack_require__(181);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -21769,14 +21782,16 @@
 			key: 'drop',
 			value: function drop(ev) {
 
+				this.props.checkNo();
+				console.log(this.props.count);
 				ev.preventDefault();
 				var data = ev.dataTransfer.getData("text");
 
-				if (this.state.flag_goalie == true && this.props.subRow.id === 'sub_row') {
+				if (this.state.flag_goalie == true && this.props.subRow.id === 'sub_row' && this.props.count == '11') {
 
 					this.props.subRow.appendChild(document.getElementById(ev.target.firstChild.id));
 					ev.target.appendChild(document.getElementById(data));
-				} else if (this.state.flag_goalie == true && this.props.subRow.id != 'sub_row') {
+				} else if (this.state.flag_goalie == true && this.props.subRow.id != 'sub_row' && this.props.count == '11') {
 					ev.target.appendChild(document.getElementById(data));
 				}
 
@@ -21791,6 +21806,73 @@
 
 /***/ },
 /* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(32);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _class = function (_React$Component) {
+		_inherits(_class, _React$Component);
+
+		function _class() {
+			_classCallCheck(this, _class);
+
+			return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+		}
+
+		_createClass(_class, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'formations' },
+					_react2.default.createElement(
+						'div',
+						null,
+						this.props.formationRow1
+					),
+					_react2.default.createElement(
+						'div',
+						null,
+						this.props.formationRow2
+					),
+					_react2.default.createElement(
+						'div',
+						null,
+						this.props.formationRow3
+					)
+				);
+			}
+		}]);
+
+		return _class;
+	}(_react2.default.Component);
+
+	exports.default = _class;
+
+/***/ },
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21901,7 +21983,7 @@
 	exports.default = _class;
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -32125,73 +32207,6 @@
 	return jQuery;
 	} );
 
-
-/***/ },
-/* 181 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(32);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _class = function (_React$Component) {
-		_inherits(_class, _React$Component);
-
-		function _class() {
-			_classCallCheck(this, _class);
-
-			return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-		}
-
-		_createClass(_class, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'formations' },
-					_react2.default.createElement(
-						'div',
-						null,
-						this.props.formationRow1
-					),
-					_react2.default.createElement(
-						'div',
-						null,
-						this.props.formationRow2
-					),
-					_react2.default.createElement(
-						'div',
-						null,
-						this.props.formationRow3
-					)
-				);
-			}
-		}]);
-
-		return _class;
-	}(_react2.default.Component);
-
-	exports.default = _class;
 
 /***/ }
 /******/ ]);
