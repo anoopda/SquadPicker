@@ -1,13 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-
-
 export default class extends React.Component {
 	constructor(props){
 		super(props);
 		this.drag = this.drag.bind(this);
-		
 	}
 	render(){
 
@@ -30,14 +27,9 @@ export default class extends React.Component {
 	}
 
 	drag(ev) {
+
 	    ev.dataTransfer.setData("text", ev.target.id);
-	 
-	    	
-	 		this.props.getsubRow(ev.target.parentNode);
-
-	    
+	 	this.props.getRow(ev.target.parentNode);    
 	}
-
-
 }
 

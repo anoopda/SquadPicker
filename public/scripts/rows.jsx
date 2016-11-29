@@ -12,8 +12,8 @@ export default class extends React.Component {
 		this.allowDrop = this.allowDrop.bind(this);
 		this.state ={
 			flag_goalie : true,
-			flag_subRow : false,
-			subRow:"null"
+			flag_subRow : false
+		
 		}
 		
 	}
@@ -21,7 +21,7 @@ export default class extends React.Component {
 	generateLayout(){
 		const first = this.props.row;
 		var layout = first.map((item,i)=>{
-			return <Players players ={item} key={i} getsubRow={this.props.getsubRow}/>		  
+			return <Players players ={item} key={i} getRow={this.props.getRow}/>		  
 		});
 		return layout;
 	}
@@ -52,17 +52,15 @@ export default class extends React.Component {
 			this.setState({flag_goalie : true});
 		}
 
-		if(this.state.subRow=='sub_row')
+		if(this.state.curRow=='sub_row')
 		{
 			this.setState({flag_subRow:true});
 			
-
 		}
 		else
 		{
 			this.setState({flag_subRow:false});
 			
-
 		}
 
 		
@@ -74,14 +72,14 @@ export default class extends React.Component {
 		console.log(this.props.count); 
 	    ev.preventDefault();
 	    var data = ev.dataTransfer.getData("text");
-
-	     if (this.state.flag_goalie==true && this.props.subRow.id === 'sub_row' && this.props.count=='11' ){
+	    
+		if (this.state.flag_goalie==true && this.props.curRow.id === 'sub_row' && this.props.count=='11' ){
 	    	
-	    	this.props.subRow.appendChild(document.getElementById(ev.target.firstChild.id));
+	    	this.props.curRow.appendChild(document.getElementById(ev.target.firstChild.id));
 	    	ev.target.appendChild(document.getElementById(data));	  
 	    }
 
-	    else if(this.state.flag_goalie==true && this.props.subRow.id != 'sub_row' && this.props.count == '11'){	
+	    else if(this.state.flag_goalie==true && this.props.curRow.id != 'sub_row' && this.props.count == '11'){	
 	    ev.target.appendChild(document.getElementById(data));
 	    }
 	    
